@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pokemon Information</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+      integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="slider.css">
+    <link rel="stylesheet" href="pokeApi.css">
+
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default bg-secondary">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">
+            <img alt="Brand" src="images/International_Pokémon_logo.png" height="50" width="125">
+          </a>
+        </div>
+      </div>
+    </nav>
+
+
+    <div class="container">
+      <div class="row mt-2 text-center">
+          <div class="col"><h3> Welcome to the Pokemon Selector </h3></div>
+      </div>
+    </br>
+      <div class="form-group text-center">
+        <button id="random-pokemon-button" class="btn btn-primary">Search for a random Pokemon!</button>
+        <img class="random-pokemon-image image" id="random-pokemon-image" src="" alt="" height="200" width="200">
+      </div>
+      <p id="random-pokemon-description" class="text-center"> 
+        </br>
+      </p>
+
+    <div class="panel-body">
+        <div class="slider-box">
+          <div><p class="slide-this">&nbsp;</p></div>
+        </div>
+      </div>
+      <div class="form-group mt-3">
+        <p id="pokemon-description-error-message" class="text-danger"> </p>
+        <label for="pokemon-description-term" class="pokemon-description-term">
+          Enter the name or number of a pokemon to find information about it:
+        </label>
+        <input type="text" class="form-control" id="pokemon-description-term">
+      </div>
+
+
+  <hr>
+
+  <pre id="log">
+
+  </pre>
+
+</div>
+
+      <div class="form-group">
+        <button id="pokemon-description-button" class="btn btn-primary" disabled>Search for Pokemon!</button>
+        
+      </div>
+      <div class="text-center">
+        <img id="pokemon-description-image" class="text-center image pokemon-images" src="" alt="">
+
+        <p id="pokemon-description">
+          </br>
+          </br>
+          </br>
+        </p>
+      </div>
+      <div class="form-group mt-3">
+        <p id="pokemon-evolution-error-message" class="text-danger"> </p>
+        <label for="pokemon-evolution-term" class="pokemon-evolution-term">
+          Enter a number to see which evolution chain it is:
+        </label>
+        <input type="text" class="form-control" id="pokemon-evolution-term">
+        <p id="pokemon-evolution"></p>
+      </div>
+
+      <div class="form-group">
+        <button id="pokemon-evolution-button" class="btn btn-primary" disabled>Find the Type!</button>
+      </div>
+    </div>
+  </br>
+  </br>
+  </br>
+  </br>
+  </br>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+      integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+      crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+      integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+      crossorigin="anonymous"></script>
+
+    <script src="pokeApiCall.js"></script>
+    <script>window.RandomPokemonSearchController.init();</script>
+    <script>window.PokemonDescriptionSearchController.init();</script>
+    <script>window.PokemonEvolutionSearchController.init();</script>
+    <script src="slider.js"></script>
+    <script src="pokeApiSlider.js"></script>
+   
+
+  </body>
+</html>

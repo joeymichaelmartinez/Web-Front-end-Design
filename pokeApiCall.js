@@ -1,6 +1,22 @@
 "use strict";
 
 (() => {
+
+    window.onscroll = function() {scrollFunction();};
+
+    let scrollFunction = () => {
+        if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+            document.getElementsByClassName("navbar")[0].style.padding = "4px 4px";
+            document.getElementById("logo").style.width = "60px";
+            document.getElementById("logo").style.height = "25px";
+        } else {
+            document.getElementsByClassName("navbar")[0].style.padding = "8px 16px";
+            document.getElementById("logo").style.width = "125px";
+            document.getElementById("logo").style.height = "50px";
+        }
+    };
+
+
     window.RandomPokemonSearchController = {
         init: () => {
             let randomPokemonButton = $("#random-pokemon-button");
@@ -93,9 +109,9 @@
                 for (let i = 0; i < pokemonNames.length; i++) {
                     $.getJSON("http://pokeapi.co/api/v2/pokemon/" + pokemonNames[i],
                         function(data) {
-                            pokemonEvolutionResultContainer.append($(' <div> ', {id: data.id}));
+                            pokemonEvolutionResultContainer.append($(' <div> ', {id: data.id, class: "evolution-image-container"}));
                             $("#" + data.id).append($(
-                                '<img>', {class: 'pokemon-evolution-image', src: data.sprites.front_default}
+                                '<img>', {class: 'pokemon-evolution-image image', src: data.sprites.front_default}
                             ));
                             $("#" + data.id).append($(
                                 '<p>', {class: 'pokemon-evolution-name text-center', text: data.name}

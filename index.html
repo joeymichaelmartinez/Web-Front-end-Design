@@ -14,76 +14,71 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-default bg-secondary">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">
-            <img alt="Brand" src="images/International_Pokémon_logo.png" height="50" width="125">
-          </a>
+    <div class="full-page">
+      <nav class="navbar navbar-default bg-secondary">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+              <img alt="Brand" id="logo" src="images/International_Pokémon_logo.png" height="50" width="125">
+            </a>
+          </div>
+          <div id="navbar-right">
+            <p>Use the fun slider to spin the images of pokemon</p>
+            <div class="slider-box">
+              <div><p class="slide-this">&nbsp;</p></div>
+            </div>  
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
 
 
-    <div class="container">
-      <div class="row mt-2 text-center">
-          <div class="col"><h3> Welcome to the Pokemon Selector </h3></div>
-      </div>
-    </br>
-      <div class="form-group text-center">
-        <button id="random-pokemon-button" class="btn btn-primary">Search for a random Pokemon!</button>
-        <img class="random-pokemon-image image" id="random-pokemon-image" src="" alt="" height="200" width="200">
-      </div>
-      <p id="random-pokemon-description" class="text-center"> 
+      <div class="container">
+        <div class="row mt-2 text-center">
+            <div class="col"><h3> Welcome to the <img src="images/International_Pokémon_logo.png" alt="pokemon-font" border="0" width="160px"> Selector </h3></div>
+        </div>
         </br>
-      </p>
-
-    <div class="panel-body">
-        <div class="slider-box">
-          <div><p class="slide-this">&nbsp;</p></div>
+        <div class="form-group text-center">
+          <button id="random-pokemon-button" class="btn btn-primary">Search for a random Pokemon!</button>
+          <img class="random-pokemon-image image" id="random-pokemon-image" src="" alt="" height="200" width="200">
         </div>
-      </div>
-      <div class="form-group mt-3">
-        <p id="pokemon-description-error-message" class="text-danger"> </p>
-        <label for="pokemon-description-term" class="pokemon-description-term">
-          Enter the name or number of a pokemon to find information about it:
-        </label>
-        <input type="text" class="form-control" id="pokemon-description-term">
-      </div>
-
-
-  <hr>
-
-  <pre id="log">
-
-  </pre>
-
-</div>
-
-      <div class="form-group">
-        <button id="pokemon-description-button" class="btn btn-primary" disabled>Search for Pokemon!</button>
-        
-      </div>
-      <div class="text-center">
-        <img id="pokemon-description-image" class="text-center image pokemon-images" src="" alt="">
-
-        <p id="pokemon-description">
-          </br>
-          </br>
+        <p id="random-pokemon-description" class="text-center"> 
           </br>
         </p>
-      </div>
-      <div class="form-group mt-3">
-        <p id="pokemon-evolution-error-message" class="text-danger"> </p>
-        <label for="pokemon-evolution-term" class="pokemon-evolution-term">
-          Enter a number to see which evolution chain it is:
-        </label>
-        <input type="text" class="form-control" id="pokemon-evolution-term">
-        <p id="pokemon-evolution"></p>
-      </div>
 
-      <div class="form-group">
-        <button id="pokemon-evolution-button" class="btn btn-primary" disabled>Find the Type!</button>
+        <div class="form-group mt-3">
+          <p id="pokemon-description-error-message" class="text-danger"> </p>
+          <label for="pokemon-description-term" class="pokemon-description-term">
+            Enter the name or number of a pokemon to find information about it:
+          </label>
+          <input type="text" class="form-control" id="pokemon-description-term">
+        </div>
+
+        <div class="form-group">
+          <button id="pokemon-description-button" class="btn btn-primary" disabled>Search for Pokemon!</button>
+          
+        </div>
+        <div class="text-center pokemon-description-container">
+          <img id="pokemon-description-image" class="text-center image pokemon-images" src="" alt="">
+
+          <p id="pokemon-description">
+            </br>
+            </br>
+            </br>
+          </p>
+        </div>
+        <div class="form-group mt-3 pokemon-evolution">
+          <p id="pokemon-evolution-error-message" class="text-danger"> </p>
+          <label for="pokemon-evolution-term" class="pokemon-evolution-term">
+            Enter a number to see which evolution chain it is:
+          </label>
+          <input type="text" class="form-control" id="pokemon-evolution-term">
+          <p id="pokemon-evolution"></p>
+          
+        <div class="form-group">
+            <button id="pokemon-evolution-button" class="btn btn-primary" disabled>Find the Type!</button>
+          </div>
+          <div class="row pokemon-evolution-result-container"></div>
+        </div>
       </div>
     </div>
   </br>

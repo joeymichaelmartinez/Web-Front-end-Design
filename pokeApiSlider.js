@@ -3,8 +3,7 @@ $(() => {
     $(".slide-this").slider({
         change: function (percentage) {
             $(".image").css({
-                "width": percentage + 100,
-                "height": percentage + 100
+                'transform': 'rotate(' + percentage * 3.6 + 'deg)'
             });
 
         }

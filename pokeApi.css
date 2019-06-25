@@ -80,3 +80,17 @@
 .pokemon-description-container {
     height: 146px;
 }
+
+#spin-text {
+  margin-bottom: 7px;
+  font-size: 16px;
+  transition: .2s;
+}
+
+.slider-box {
+  margin: auto;
+}
+
+#pokemon-evolution-error-message, #pokemon-description-error-message {
+  display: inline;
+}

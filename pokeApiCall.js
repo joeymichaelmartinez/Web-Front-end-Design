@@ -9,10 +9,12 @@
             document.getElementsByClassName("navbar")[0].style.padding = "4px 4px";
             document.getElementById("logo").style.width = "60px";
             document.getElementById("logo").style.height = "25px";
+            document.getElementById("spin-text").style['font-size'] = "14px";
         } else {
             document.getElementsByClassName("navbar")[0].style.padding = "8px 16px";
             document.getElementById("logo").style.width = "125px";
             document.getElementById("logo").style.height = "50px";
+            document.getElementById("spin-text").style['font-size'] = "16px";
         }
     };
 
@@ -38,6 +40,18 @@
                     );
                 }) 
             );
+            
+            randomPokemonButton.click(() =>
+                $.getJSON("http://pokeapi.co/api/v2/pokemon/" + randomPokeIndex,
+                function(data){
+                    randomPokeIndex = getRandomPokemonIndex();
+                    randomPokemonDescription.text(
+                        "You got " + data.name + "! " + "Enter the Pokemon's name below, " +
+                        "or enter the name of a Pokemon you already know to get more information!"
+                    );
+                }) 
+            );
+
         }
     };
 
@@ -92,6 +106,22 @@
             );
             pokemonDescriptionTerm.bind("input", () => 
                 pokemonDescriptionButton.prop("disabled", !pokemonDescriptionTerm.val()));
+            
+            pokemonDescriptionTerm.on("keypress", (e) => {
+                if (e.which === 13) {
+                    $.getJSON("http://pokeapi.co/api/v2/pokemon/" + pokemonDescriptionTerm.val().toLowerCase(),  
+                    function(data){
+                        sprite = data.sprites.front_default;
+                        populatePokemonDescription(data.id, pokemonDescription, sprite);
+                    }).done(() =>{
+                        pokemonDescriptionErrorMessage.empty();
+                    }).fail(() => {
+                        pokemonDescriptionErrorMessage.text(
+                            "Incorrect usage. Please enter the name of a pokemon or a number under 802"
+                        );
+                    });
+                }
+            });
         }
     };
 
@@ -109,7 +139,7 @@
                 for (let i = 0; i < pokemonNames.length; i++) {
                     $.getJSON("http://pokeapi.co/api/v2/pokemon/" + pokemonNames[i],
                         function(data) {
-                            pokemonEvolutionResultContainer.append($(' <div> ', {id: data.id, class: "evolution-image-container"}));
+                            pokemonEvolutionResultContainer.append($('<div>', {id: data.id, class: "evolution-image-container"}));
                             $("#" + data.id).append($(
                                 '<img>', {class: 'pokemon-evolution-image image', src: data.sprites.front_default}
                             ));
@@ -160,6 +190,36 @@
             
             pokemonEvolutionTerm.bind("input", () => 
                 pokemonEvolutionButton.prop("disabled", !pokemonEvolutionTerm.val()));
+        
+            pokemonEvolutionTerm.bind("keypress", (e) => {
+                if (e.which === 13) {
+                    $.getJSON("http://pokeapi.co/api/v2/evolution-chain/" + pokemonEvolutionTerm.val(),
+                    function(data){
+                        pokemonEvolutionResultContainer.empty().append();
+                        pokemonNames = [];
+                        // The pokeApi returns the names in the pokemon evolution chain in a strange way,
+                        // where some names are nested further than others, so to handle this nesting, I
+                        // use the following code.
+                        pokemonNames.push(data.chain.species.name);
+                        if (data.chain.evolves_to){
+                            for (let i = 0; i < data.chain.evolves_to.length; i++){
+                                pokemonNames.push(data.chain.evolves_to[i].species.name);
+                                if (data.chain.evolves_to[i].evolves_to) {
+                                    for (let j = 0; j < data.chain.evolves_to[i].evolves_to.length; j++) {
+                                        pokemonNames.push(data.chain.evolves_to[i].evolves_to[j].species.name);
+                                    }
+                                }
+                            }
+                        }
+                    }).done(() => {
+                        pokemonEvolutionErrorMessage.empty();
+                        populatePokemonEvolution();
+                    }).fail(() => {  
+                        pokemonEvolutionErrorMessage.text("Incorrect usage. Please enter a number below 424.");
+                    });
+                }
+            });
+                
         }
     };
 })();

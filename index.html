@@ -23,7 +23,7 @@
             </a>
           </div>
           <div id="navbar-right">
-            <p>Use the fun slider to spin the images of pokemon</p>
+            <p id="spin-text">Use the fun slider to spin the images of pokemon</p>
             <div class="slider-box">
               <div><p class="slide-this">&nbsp;</p></div>
             </div>  
@@ -46,7 +46,6 @@
         </p>
 
         <div class="form-group mt-3">
-          <p id="pokemon-description-error-message" class="text-danger"> </p>
           <label for="pokemon-description-term" class="pokemon-description-term">
             Enter the name or number of a pokemon to find information about it:
           </label>
@@ -55,7 +54,7 @@
 
         <div class="form-group">
           <button id="pokemon-description-button" class="btn btn-primary" disabled>Search for Pokemon!</button>
-          
+          <p id="pokemon-description-error-message" class="text-danger"> </p>
         </div>
         <div class="text-center pokemon-description-container">
           <img id="pokemon-description-image" class="text-center image pokemon-images" src="" alt="">
@@ -67,7 +66,6 @@
           </p>
         </div>
         <div class="form-group mt-3 pokemon-evolution">
-          <p id="pokemon-evolution-error-message" class="text-danger"> </p>
           <label for="pokemon-evolution-term" class="pokemon-evolution-term">
             Enter a number to see which evolution chain it is:
           </label>
@@ -75,7 +73,8 @@
           <p id="pokemon-evolution"></p>
           
         <div class="form-group">
-            <button id="pokemon-evolution-button" class="btn btn-primary" disabled>Find the Type!</button>
+            <button id="pokemon-evolution-button" class="btn btn-primary" disabled>Find the Evolution!</button>
+            <p id="pokemon-evolution-error-message" class="text-danger"> </p>
           </div>
           <div class="row pokemon-evolution-result-container"></div>
         </div>
